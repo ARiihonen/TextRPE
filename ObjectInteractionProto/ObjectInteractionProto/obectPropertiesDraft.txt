@@ -1,0 +1,61 @@
+-kannattaa olla erikseen kansio "objects"
+-objects-kansion alla kannattaa olla oma kansionsa erilaisille objektityypeille:
+* weapon
+* furniture
+* building
+* machine
+* animal
+* human
+
+-eri objektityyppien alla kannattaa olla omat kansionsa/tiedostonsa erilaisille ilemtymille kyseisest‰ tyypist‰:
+* weapon
+** axe
+* furniture
+** table
+* building
+** cottage
+* machine
+** saw
+* animal
+** fox
+* human
+** worker
+
+-koodin puolesta luodaan oma luokka "objects", jolle tietyt toiminnot ovat mahdollisia, ja jonka kaikki objektit periv‰t:
+-- objekteja (k‰yt‰nnˆss‰ kaikkia fyysisi‰ asioita) voi haistaa/maistaa/katsoa/kuunnella/koskea
+
+- kaikki alityypit periv‰t objektin ominaisuudet, mutta niilla on myˆs omia uniikkeja ominaisuuksiaan jotka t‰ydent‰v‰t ja korvaavat perittyj‰ ominaisuuksia:
+-- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
+--- aseita voi heitt‰‰, nostaa, niill‰ voi lyˆd‰/ampua, niit‰ voi myyd‰/rakentaa/purkaa
+-- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
+--- rakennuksien sis‰‰n/ulos voi menn‰, niit‰ voi rakentaa/purkaa/myyd‰
+-- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
+--- el‰imi‰ voi myyd‰/tappaa/k‰ske‰
+
+-kaikista alityypeist‰ luodaan omia ilmentymi‰‰n, joilla on omia uniikkeja ominaisuuksiaan jotka t‰ydent‰v‰t ja korvaavat perittyj‰ ominaisuuksia:
+-- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
+--- aseita voi heitt‰‰, nostaa, niill‰ voi lyˆd‰/ampua, niit‰ voi myyd‰/rakentaa/purkaa
+---- kirvest‰ voi teroittaa, sen voi heitt‰‰
+---- miekkaa voi teroittaa, sill‰ voi pist‰‰/viilt‰‰/torjua
+-- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
+--- rakennuksien sis‰‰n/ulos voi menn‰, niit‰ voi rakentaa/purkaa/myyd‰
+---- vajan voi r‰j‰ytt‰‰
+---- linnan voi piiritt‰‰
+
+
+- kannattaa m‰‰ritell‰ materiaaleja, joilla on ominaisuuksia:
+-- wood: TRPE_LIGHT, TRPE_WORKABLE, TRPE_DECOMPOSABLE, TRPE_BURNING, TRPE_CHEAP, TRPE_NON_ILLEGAL
+-- metal: TRPE_HEAVY, TRPE_WORKABLE, REP_NON_DECOMPOSABLE, TRPE_NON_BURNING, TRPE_PRICEY, TRPE_NON_ILLEGAL
+-- human flesh: TRPE_LIGHT, TRPE_WORKABLE, TRPE_DECOMPOSABLE, TRPE_BURNING, TRPE_CHEAP, TRPE_ILLEGAL
+
+- objektien materiaali kannattaa m‰‰ritell‰:
+-- axe, metal
+-- axe, stone
+-- sword, wood
+-- fist, flesh
+-- fish, fish
+
+- materiaali ja tyyppi m‰‰rittelee mit‰ kaikkea objektilla/-lle voi tehd‰
+-- kivist‰ linnaa ei voi polttaa
+-- puisella vasaralla ei voi takoa
+-- metallisella hevosella ei voi ratsastaa

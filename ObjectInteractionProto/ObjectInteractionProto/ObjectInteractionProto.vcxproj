@@ -113,10 +113,10 @@
     <ClCompile Include="ObjectInteractionProto.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="obectPropertiesDraft.txt" />
+    <None Include="TRPE_OIA.csv" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="TRPE_OIA.csv" />
+    <Text Include="obectPropertiesDraft.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
