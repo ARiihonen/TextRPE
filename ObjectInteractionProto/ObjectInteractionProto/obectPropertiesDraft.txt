@@ -1,4 +1,8 @@
--kannattaa olla erikseen kansio "objects"
+T‰m‰ tekstitiedosto sis‰lt‰‰ pohdintaa ja ajatuksia tavaroiden tai objektien k‰ytˆst‰
+ja mill‰ tavalla ne kannattaisi luoda ja implementoida.
+Ajatukset eiv‰t ole toistaiseksi miss‰‰n j‰rjestyksess‰ ja ne voivat menn‰ ristiin ja p‰‰lekk‰in.
+
+-kannattaa(ko?) olla erikseen kansio "objects"
 -objects-kansion alla kannattaa olla oma kansionsa erilaisille objektityypeille:
 * weapon
 * furniture
@@ -7,7 +11,7 @@
 * animal
 * human
 
--eri objektityyppien alla kannattaa olla omat kansionsa/tiedostonsa erilaisille ilemtymille kyseisest‰ tyypist‰:
+-eri objektityyppien alla kannattaa (ehk‰) olla omat kansionsa/tiedostonsa erilaisille ilemtymille kyseisest‰ tyypist‰:
 * weapon
 ** axe
 * furniture
@@ -21,7 +25,8 @@
 * human
 ** worker
 
--koodin puolesta luodaan oma luokka "objects", jolle tietyt toiminnot ovat mahdollisia, ja jonka kaikki objektit periv‰t:
+-koodin puolesta luodaan oma luokka "objects", jolle tietyt toiminnot ovat mahdollisia,
+	ja jonka kaikki objektit periv‰t:
 -- objekteja (k‰yt‰nnˆss‰ kaikkia fyysisi‰ asioita) voi haistaa/maistaa/katsoa/kuunnella/koskea
 
 - kaikki alityypit periv‰t objektin ominaisuudet, mutta niilla on myˆs omia uniikkeja ominaisuuksiaan jotka t‰ydent‰v‰t ja korvaavat perittyj‰ ominaisuuksia:
@@ -42,20 +47,36 @@
 ---- vajan voi r‰j‰ytt‰‰
 ---- linnan voi piiritt‰‰
 
+- ilmentymill‰ voi olla erilaisia ali-ilmentymi‰, joilla voi olla esimerkiksi erilaisia materiaaleja:
+-- kirves
+--- kirves, puuvartinen
+--- kirves, metallivartinen
+-- miekka
+--- rapier
+--- kahden k‰den lyˆm‰miekka
+--- ‰p‰r‰miekka
+--- puinen lelumiekka
 
-- kannattaa m‰‰ritell‰ materiaaleja, joilla on ominaisuuksia:
--- wood: TRPE_LIGHT, TRPE_WORKABLE, TRPE_DECOMPOSABLE, TRPE_BURNING, TRPE_CHEAP, TRPE_NON_ILLEGAL
--- metal: TRPE_HEAVY, TRPE_WORKABLE, REP_NON_DECOMPOSABLE, TRPE_NON_BURNING, TRPE_PRICEY, TRPE_NON_ILLEGAL
--- human flesh: TRPE_LIGHT, TRPE_WORKABLE, TRPE_DECOMPOSABLE, TRPE_BURNING, TRPE_CHEAP, TRPE_ILLEGAL
 
-- objektien materiaali kannattaa m‰‰ritell‰:
--- axe, metal
--- axe, stone
--- sword, wood
--- fist, flesh
--- fish, fish
 
-- materiaali ja tyyppi m‰‰rittelee mit‰ kaikkea objektilla/-lle voi tehd‰
--- kivist‰ linnaa ei voi polttaa
--- puisella vasaralla ei voi takoa
--- metallisella hevosella ei voi ratsastaa
+
+
+
+- mik‰ on j‰rkevin tapa luoda (pelin tekijˆiden toimesta, ei koodin puolesta) objekteja peliin?
+-- jokaisella objektilla olisi hyv‰ olla oma tiedostonsa, jossa sill‰/-lle teht‰v‰t asiat on
+	kirjattuna, esimerkkin‰ seuraava:
+
+	----------------------------------------------------
+	sword.txt
+	ACTION take	hit	touch	throw	discard	eat	drink
+			1	1	1		1		1		0	0
+	----------------------------------------------------
+
+--- hyv‰ puoli t‰ss‰ on se, ett‰ kun objekteja alkaa olla satoja tai tuhansia,
+	niin ei tarvitse selata yht‰ tiedostoa, jossa on tuhansia eri objekteja ja paljon dataa,
+	vaan jokainen tiedosto on oma selke‰ kokonaisuutensa, esimerkiksi "axe_wooden.xml/.csv/.txt",
+	"door_metal.xml/.csv/.txt", "whiskey_bottle.xml/.csv/.txt"
+--- huono puoli on interkatioiden yll‰pidett‰vyys, p‰ivitt‰mien ja lis‰‰minen:
+---- aina kun keksit‰‰n uusi asia tai verbi, jonka peliss‰ voi tehd‰, t‰ytyy kaikki
+	tiedostot p‰ivitt‰‰ erikseen
+

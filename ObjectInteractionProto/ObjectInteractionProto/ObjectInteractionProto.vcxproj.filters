@@ -18,6 +18,9 @@
     <ClCompile Include="ObjectInteractionProto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TRPEObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="TRPE_OIA.csv">
@@ -28,5 +31,10 @@
     <Text Include="obectPropertiesDraft.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TRPEObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
