@@ -1,1 +1,101 @@
 
+Caranfin: Mä oon yrittäny pohtia rakennetta tossa pelissä ja jotain jonkunlaista mulla on kasassa kai, mutta hitto että on vaikeaa
+Netzia: joo, ihan totta. mie kanssa pohdiskelin, että pilkon tuon itemeihin liittyvän testin niin pieniin osiin, että saan kunnon otteen. varmaan olis hyödyllistä myös kirjata mieleentulevia kysymyksiä ylös ja sitten ettiä niihin vastaukset. lähinnä designin puolesta.
+Netzia: mietiskelin nimittäin sitä, että jos tahotaan, että maailma ja sen tavarat on dynaamisia tai että pelaaja voi hyväksikäyttää niitä, niin mitenkäs viholliset/AI?
+Netzia: jos joo, se tekee AI:n suunittelusta ja toteuttamisesta astetta hankalampaa
+Netzia: jos taas halutaan, että tavarat on dynaamisia vaan pelaajan kannalta, niin viholliset voi vaikuttaa staattisilta
+Netzia: koska ne ei ymmärrä ottaa maassa olevaa sädepyssyä/kirvestä/haulikkoa ja käyttää sitä
+Caranfin: Olishan se parempi, että AI pystyis kans käyttämään esineitä jne jos tulee tarve
+Netzia: tuumailin myös, että millä tavalla halutaan tavaroiden olevan käytettäviä. halutaanko pelkästään binäärivastaus kysymykseen "Voiko pelaaja yhdistää tämän toiminnon tähän itemiin" vai halutaanko siihenkin skaalaa. tarkotan tuolla kysymyksellä siis sitä, että minkälaiset jutut on mahdollisia millasilla itemeillä. eli että miekalla voi lyödä, mutta sitä ei voi syödä. leivän voi syödä ja sillä voi teoriassa myös lyödä, mutta sillä ei voi lävistää ketään.
+Caranfin: Pitää miettiä sitä skaalaa, millä halutaan että kaikenlaisia juttuja ylipäätään voi käyttää
+Netzia: binäärivastaus olis sit aina että "Miekalla voi lyödä" ja vastaus, jossa olis enemmän vaihtoehtoja olis "Miekalla voi lyödä, mutta olet liian heikko lyömään tällä miekalla" tai "Pöydän päälle voi hypätä, mutta tämä pöytä on niin heikko, että se romahtaa"
+Caranfin: Nii
+Caranfin: Sit toisaalta onko tarkoituksenmukaista antaa pelaajalle mahdollisuus syödä asioita
+Caranfin: Ylipäätään
+Netzia: nii, no tuo leipäjuttu oli nyt ihan pelkkä esimerkki minkä keksin äsken tuota kirjottaessa
+Caranfin: Nii
+Caranfin: Mut sama pätee moneen muuhun
+Caranfin: Mä taas pohdiskelin tänään luennolla tosiaan sitä, että miten määritellään se pelaajan tilanne ja tila
+Caranfin: Mä oletan, että jokanen erillinen alue kannattaa luultavasti määritellä 3d-koordinaatistolla ja sijotella sinne erilaisia kiintopisteitä tiettyihin kohtiin
+Caranfin: Haaste siihen kuvailuun on jos on pitkiä sarjoja tai isompia ryhmiä samantapaisia asioita
+Caranfin: Sekä se et jos joku asia loogisesti blokkais näkyvyyden toiseen
+Caranfin: Ylipäätään näkyvyys/kuuluvuus et onko se osittaista vai kokonaista ja miten hyvin (esim. metsässä tiheikön takana puro versus kallio versus luola kalliossa)
+Caranfin: Sen lisäks jos on suljetussa tilassa ja sieltä poistuu oven/ikkunan kautta niin mihin tulee? Johonkin travel-moodiin, jossa jokasesta tilasta warppaa suoraan sisäänkäynnin kautta toisaalle?
+Netzia: sellasissa hyvin paikallisissa tilanteissa miusta ei tartteis huolehtia millään tapaa näkyvyydestä (esimerkiks näkeekö 3m pöydän takana olevan jutun) vaan voi olettaa, kuten roolipeleissä yleisesti, että pelaaja ei ole staattisesti paikallaan, vaan tilanteen niin salliessa liikkuu sellasen 5m halkasijaltaan olevan alueen sisällä ja havaitsee automaattisesti kaiken (ei salaisen), minkä näkee mistä tahansa pisteestä siitä alueelta
+Netzia: mut sit tuommoset jutut onkin eri asia, jos on jotain vähän laajempaa aluetta ja just jotain jonkun mäen tai tiheikön toisella puolella
+Netzia: ja liikkumisen sijaan käytettäs lauseita "Katson baaritiskin taakse" tai "Yritän nähdä ikkunasta sisään", mikä suoraan tarkottaa, että pelaaja liikkuu jollain tapaa tehdessään tuota tai yrittäessään saavuttaa sen tavotteensa
+Caranfin is now Away.
+Netzia: mut nuo on vaan niitä hyvin paikallisia tilanteita, jollon tapahtuu jo jotain kiinnostavaa tai pelaaja on kiinnostavassa ympäristössä, mitä tutkia tuollasilla ympäripyöreemmillä komennoilla
+Caranfin is now Online.
+Caranfin: mm
+Caranfin: Joo
+Caranfin: joka tapauksessa jonkun näkönen näkyvyysjuttu on mun mielestä tärkeetä mahdollistaa
+Caranfin: Samoin semmonen öö
+Caranfin: epämääräisyys
+Caranfin: "tuolla on monta pöytää"
+Caranfin: versus "siellä on pöytä ja pöytä ja pöytä ja pöytä ja pöytä"
+Netzia: juu.
+Netzia: tavallaanhan tuon epämääräisyyden voi ratkasta taas vaan kirjottamalla enemmän
+Netzia: "Näet romukasan" kun pelaaja on kaukana, "Näet ilmeisesti baaritappelun jäljiltä jääneen kasan erinäisiä tuolinjalkoja ja pöytiä yms. roskaa ja paskaa", kun on lähempänä
+Caranfin: Niin mut lähinnä mietit kun oot siellä baarissa
+Caranfin: edessä tiski, oikealla 10 loosia seinustalla, vasemmalla 12 pöytää avoimessa tilassa
+Caranfin: Jos se "kartta" on rakennettu yksityiskohtasesti niin sen järjestelmän pitää osata sanoa, että "pöytiä" ja "looseja"
+Caranfin: eikä eritellä niitä
+Netzia: nii joo je
+Netzia: jep
+Caranfin: Sen vois tehdä ehkä silleen, että jokanen alue on rajattu omiin semmosiin pienempiin alueisiin
+Caranfin: kuten tässä nää "pöydät" ja "oikea seinusta"
+Caranfin: Ja sit se peli katsoo, että mitä alueita on milläki puolella pelaajaa
+Caranfin: ja sit antaa sen yleisen kuvauksen niistä alueista ("pöytiä", "seinustalla looseja")
+Caranfin: paitsi sit kun on siellä sisällä, jollon sillä saattaa olla väliä kuinka monen pöydän päässä pelaaja on tiskistä tai uloskäynnistä
+Netzia: juu
+Netzia: kuulostaa järkevältä
+Netzia: kaikki tapahtuu ylhäältä alaspäin, epämääräisyydestä tarkkuuteen
+Caranfin: joo
+Caranfin: sit senhän ei välttämättä tarvitse edes tietää, onko tarkalleen montako pöytää ja missä
+Caranfin: jos pelaajalle tulee kiire pois ni voi olla et se sanoo et "monta"
+Caranfin: Ja jos on munkki ja ollu taito matkassa ni sit on vaan "pitää yhden välistä päästä pois"
+Caranfin: Sit pitää myös alueessa jotenkin hierarkisoida noi eri kiintopisteet ja semmoset, jotta se alkukuvailu voi kaikista eri kuvakulmista olla hyvä
+Caranfin: ja silleen ns. kuljettaa sitä pelaajan huomiota oikein siellä paikassa
+Caranfin: Yleensä varmaan jättäen tärkeimmät pisteet viimeseks
+Caranfin: Jotta niihin suoraan reagoiminen on luonnollisempaa tarinankerrontaa
+Caranfin: Tai ehkä kaikkein hallitsevimmat pisteet ensin
+Caranfin: MASSIIVINEN PATSAS on ehkä ensin silmissä ennen kun se tyyppi, joka sen edessä meuhkaa
+Caranfin: esim.
+Caranfin: Jätettäköön varmaan varsinaisen level designerin huoleksi se ja annetaan mahdolliseks määrittää eri tärkeiden pisteiden tärkeys siinä alkuselonteossa
+Netzia: mietin tuohon eri kuvakulmista kuvailuun, että riippuen tietysti miten paljon halutaan aina yhteen moduuliin kirjottaa mahollisuuksia, niin eihän sitä tartte välttämättä tukea kuin yhdestä kuvakulmasta, eli siitä pisteestä mistä pelaaja menee sisään.
+Netzia: jos toisaalta halutaan kirjottaa kaikki tilanteet, meni sisään sitten ikkunasta, ovesta tai kattoluukusta, niin sit se tietysti ehkä on eri asia.
+Netzia: tai jos sen haluaa aina olevan mahdollista
+Caranfin: Eri kuvakulmista pitää kuitenkin kuvailla esim. taistelujen jälkeen jne
+Caranfin: Kun paikka on muuttunut
+Caranfin: Niin saman tien voi tehdä siitä yleispätevän, jotta takaa enemmän vaihtelevuutta peliin kun voi olla enemmän vaihtoehtoja mennä sisään niin, että kuvailut toimii edelleen
+Caranfin: Tai no ei _pidä_
+Caranfin: mutta olis kiva ja veikkaan, ettei ole niin kovin vaikeaa
+Caranfin: Tai no
+Caranfin: haastavaa se tulee olemaan, mut ei niin kovin vaikeaa suhteessa koko muuhun projektiin
+Netzia: no joo. mietin lähinnä sitä, että kun kerran on paikan kuvaillu, niin pelaajalla on päässään kuva ja kartta, jonka jälkeen voi vaan kuvailla "se juttu, joka oli takaseinällä on nyt pirstaleina keskellä lattiaa ja ne tynnyrit, jotka oli siellä baaritiskin takana on nyt halki ja kalja valuu niistä lattialle"
+Caranfin: Nii
+Netzia: eli mitään ei perjaatteessa tartte kuvailla uudestaan mistään näkökulmasta, vaan kertoo miten ne kuvaillut jutut on muuttunu
+Caranfin: Se on kyl totta
+Caranfin: hmmm
+Caranfin: Nii sit meiän pitää tukea sitä, että jotkut paikat muuttuu eri tavoilla
+Caranfin: Eri hahmot on niissä jne
+Caranfin: Ja että peli muistaa muutokset kun sinne tulee seuraavan kerran
+Caranfin: Jollain tavalla
+Netzia: joo
+Caranfin: tää nyt oli eri asia
+Netzia: jep
+Caranfin: mut asia kuitenki
+Netzia: jep. taidan tehdä githubin lisäks google docsin, johon kirjottelen kysymyksiä, pohdintaa ja vastauksia. koodia on hankalaa kirjottaa, kun ei tiedä yhtään, että mitä pitäs tehdä.
+Caranfin: joo
+Netzia: ja tää on hyödyllistä pohdiskelua, mitä ei muista puolen vuoden päästä ollenkaan, eikä välttämättä keksi
+Caranfin: jep
+Netzia: annoin githubin repolle itsevaltiuden oikeudella nimen TextRPE, eli Text RolePlayingEngine, mutta olisko joku toinen parempi nimi? esim. TextRoleplayingGameEngine
+Netzia: (ei mikään finaalinimi)
+Caranfin: Githubiin vois toisaalta lisätä jonkun ihan plaintext- tai latex-dokumentin, johon vois sit lisäillä asioita
+Netzia: joo
+Caranfin: niin että kaikki olis keskitetty sinne eikä tarttis google docseja härpätöidä sen lisäks
+Netzia: totta
+Netzia: teenpä siis latex-dokkarin
+Netzia: tosin teen kyllä alkuvaiheessa jonkun muun.
+Netzia: koska sinne tulee paljon roskaa ja tuumailua, niin helpompaa vaan tehdä joku .txt
