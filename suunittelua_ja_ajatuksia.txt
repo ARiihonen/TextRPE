@@ -1,3 +1,13 @@
+Tässä tiedostossa on pääasiassa ajatuksen virtaa ja keskustelua pelimoottorin eri osasista. Aiheen otsikot on eroteltu viivojen väliin:
+
+-------------
+Tällä tavalla
+-------------
+
+Tämän jälkeen seuraa otsikkoon liittyvää keskustelua, jonka jälkeen mahdollisia myöhemmin lisättyjä kommentteja:
+
+--> Tällä tavalla kommentoituna.
+
 --------------------------------------------------
 AI ja objektien dynaamisuus, objektien käyttäminen
 --------------------------------------------------
@@ -105,3 +115,17 @@ Netzia: joo
 Caranfin: tää nyt oli eri asia
 Netzia: jep
 Caranfin: mut asia kuitenki
+
+-----------
+Actioneista
+-----------
+
+Caranfin: imo vois tehdä mahdollisesti erottelun semmosten ns. freeform-tilanteiden ja pakotettujen valintojen välillä
+Caranfin: esim. taistelu ja jotku muut jutut on selvästi pakotettuja valintoja, jotka sulkee pois kaikki niihin liittymättömät asiat
+Caranfin: myös joku, että tyyppi huutaa sulle toiselta puolelta huonetta, pitää olla pakotettu (voi olla et yks vaihtoehto on 'ignore', mut joka tapauksessa tommosen pitää olla suora valinta eikä semmonen et "no mä meen syömään leipää tässä välissä
+Caranfin: "
+Caranfin: )
+Netzia: joo
+Netzia: kuulostaa järkevältä
+
+--> Ehdotus: Kaksi erillistä moodia tai pelimuotoa: "Reagointi" ja "Vapaa toiminta". Vapaa toiminta on pääasiallinen muoto, jossa pelaaja pelaa peliä. Tällöin pelaaja voi mielensä mukaan tutkia ja ihmetellä maailmaa, lukea kuvauksia, etsiä välineitä, kulkea maailmassa ja tehdä mitä haluaa ja voi. Kun pelaaja tai AI aloittaa keskenään vuorovaikuttamisen, esimerkiksi keskustelun tai taistelun, muuttuu pelimuoto reagoinniksi. Reagoinnin aikana pelaajalla ei ole mahdollisuutta tehdä mielivaltaisia pelin ja moottorin muutoin sallimia toimintoja, vaan pelaajan täytyy vastata tilanteeseen supistetulla vapaudella. Joskus nämä supistetut toiminnot mahdollistavat reagointitilan lopettamisen ja palaamisen vapaaseen toimintaan, esimerkiksi sivuuttamalla AI:n aloittaman keskustelun tai pakenemalla onnistuneesti alkavasta kahakasta.
