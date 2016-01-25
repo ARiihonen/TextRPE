@@ -1,6 +1,7 @@
+--------------------------------------------------
+AI ja objektien dynaamisuus, objektien käyttäminen
+--------------------------------------------------
 
-Caranfin: Mä oon yrittäny pohtia rakennetta tossa pelissä ja jotain jonkunlaista mulla on kasassa kai, mutta hitto että on vaikeaa
-Netzia: joo, ihan totta. mie kanssa pohdiskelin, että pilkon tuon itemeihin liittyvän testin niin pieniin osiin, että saan kunnon otteen. varmaan olis hyödyllistä myös kirjata mieleentulevia kysymyksiä ylös ja sitten ettiä niihin vastaukset. lähinnä designin puolesta.
 Netzia: mietiskelin nimittäin sitä, että jos tahotaan, että maailma ja sen tavarat on dynaamisia tai että pelaaja voi hyväksikäyttää niitä, niin mitenkäs viholliset/AI?
 Netzia: jos joo, se tekee AI:n suunittelusta ja toteuttamisesta astetta hankalampaa
 Netzia: jos taas halutaan, että tavarat on dynaamisia vaan pelaajan kannalta, niin viholliset voi vaikuttaa staattisilta
@@ -15,6 +16,11 @@ Caranfin: Ylipäätään
 Netzia: nii, no tuo leipäjuttu oli nyt ihan pelkkä esimerkki minkä keksin äsken tuota kirjottaessa
 Caranfin: Nii
 Caranfin: Mut sama pätee moneen muuhun
+
+-----------------------------------------------------------
+Pelaajan ympäristö, 3D-tilan määrittely, näkyvyys/kuuluvuus
+-----------------------------------------------------------
+
 Caranfin: Mä taas pohdiskelin tänään luennolla tosiaan sitä, että miten määritellään se pelaajan tilanne ja tila
 Caranfin: Mä oletan, että jokanen erillinen alue kannattaa luultavasti määritellä 3d-koordinaatistolla ja sijotella sinne erilaisia kiintopisteitä tiettyihin kohtiin
 Caranfin: Haaste siihen kuvailuun on jos on pitkiä sarjoja tai isompia ryhmiä samantapaisia asioita
@@ -24,12 +30,15 @@ Caranfin: Sen lisäks jos on suljetussa tilassa ja sieltä poistuu oven/ikkunan 
 Netzia: sellasissa hyvin paikallisissa tilanteissa miusta ei tartteis huolehtia millään tapaa näkyvyydestä (esimerkiks näkeekö 3m pöydän takana olevan jutun) vaan voi olettaa, kuten roolipeleissä yleisesti, että pelaaja ei ole staattisesti paikallaan, vaan tilanteen niin salliessa liikkuu sellasen 5m halkasijaltaan olevan alueen sisällä ja havaitsee automaattisesti kaiken (ei salaisen), minkä näkee mistä tahansa pisteestä siitä alueelta
 Netzia: mut sit tuommoset jutut onkin eri asia, jos on jotain vähän laajempaa aluetta ja just jotain jonkun mäen tai tiheikön toisella puolella
 Netzia: ja liikkumisen sijaan käytettäs lauseita "Katson baaritiskin taakse" tai "Yritän nähdä ikkunasta sisään", mikä suoraan tarkottaa, että pelaaja liikkuu jollain tapaa tehdessään tuota tai yrittäessään saavuttaa sen tavotteensa
-Caranfin is now Away.
 Netzia: mut nuo on vaan niitä hyvin paikallisia tilanteita, jollon tapahtuu jo jotain kiinnostavaa tai pelaaja on kiinnostavassa ympäristössä, mitä tutkia tuollasilla ympäripyöreemmillä komennoilla
-Caranfin is now Online.
 Caranfin: mm
 Caranfin: Joo
 Caranfin: joka tapauksessa jonkun näkönen näkyvyysjuttu on mun mielestä tärkeetä mahdollistaa
+
+--------------------------------------------------------
+Maailman ja asioiden kuvailu, epämääräisyys vs. tarkkuus
+--------------------------------------------------------
+
 Caranfin: Samoin semmonen öö
 Caranfin: epämääräisyys
 Caranfin: "tuolla on monta pöytää"
@@ -55,6 +64,11 @@ Caranfin: joo
 Caranfin: sit senhän ei välttämättä tarvitse edes tietää, onko tarkalleen montako pöytää ja missä
 Caranfin: jos pelaajalle tulee kiire pois ni voi olla et se sanoo et "monta"
 Caranfin: Ja jos on munkki ja ollu taito matkassa ni sit on vaan "pitää yhden välistä päästä pois"
+
+---------------------------------
+Kiintopisteet ja niiden hierarkia
+---------------------------------
+
 Caranfin: Sit pitää myös alueessa jotenkin hierarkisoida noi eri kiintopisteet ja semmoset, jotta se alkukuvailu voi kaikista eri kuvakulmista olla hyvä
 Caranfin: ja silleen ns. kuljettaa sitä pelaajan huomiota oikein siellä paikassa
 Caranfin: Yleensä varmaan jättäen tärkeimmät pisteet viimeseks
@@ -78,6 +92,11 @@ Caranfin: Nii
 Netzia: eli mitään ei perjaatteessa tartte kuvailla uudestaan mistään näkökulmasta, vaan kertoo miten ne kuvaillut jutut on muuttunu
 Caranfin: Se on kyl totta
 Caranfin: hmmm
+
+------------------------------------------------------------------
+Paikkojen muutoksen dynaamisuus ja muuttuneiden asioiden säilyminen
+-------------------------------------------------------------------
+
 Caranfin: Nii sit meiän pitää tukea sitä, että jotkut paikat muuttuu eri tavoilla
 Caranfin: Eri hahmot on niissä jne
 Caranfin: Ja että peli muistaa muutokset kun sinne tulee seuraavan kerran
@@ -86,16 +105,3 @@ Netzia: joo
 Caranfin: tää nyt oli eri asia
 Netzia: jep
 Caranfin: mut asia kuitenki
-Netzia: jep. taidan tehdä githubin lisäks google docsin, johon kirjottelen kysymyksiä, pohdintaa ja vastauksia. koodia on hankalaa kirjottaa, kun ei tiedä yhtään, että mitä pitäs tehdä.
-Caranfin: joo
-Netzia: ja tää on hyödyllistä pohdiskelua, mitä ei muista puolen vuoden päästä ollenkaan, eikä välttämättä keksi
-Caranfin: jep
-Netzia: annoin githubin repolle itsevaltiuden oikeudella nimen TextRPE, eli Text RolePlayingEngine, mutta olisko joku toinen parempi nimi? esim. TextRoleplayingGameEngine
-Netzia: (ei mikään finaalinimi)
-Caranfin: Githubiin vois toisaalta lisätä jonkun ihan plaintext- tai latex-dokumentin, johon vois sit lisäillä asioita
-Netzia: joo
-Caranfin: niin että kaikki olis keskitetty sinne eikä tarttis google docseja härpätöidä sen lisäks
-Netzia: totta
-Netzia: teenpä siis latex-dokkarin
-Netzia: tosin teen kyllä alkuvaiheessa jonkun muun.
-Netzia: koska sinne tulee paljon roskaa ja tuumailua, niin helpompaa vaan tehdä joku .txt
