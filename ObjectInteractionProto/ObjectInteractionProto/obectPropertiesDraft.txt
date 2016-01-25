@@ -1,82 +1,20 @@
-T‰m‰ tekstitiedosto sis‰lt‰‰ pohdintaa ja ajatuksia tavaroiden tai objektien k‰ytˆst‰
-ja mill‰ tavalla ne kannattaisi luoda ja implementoida.
-Ajatukset eiv‰t ole toistaiseksi miss‰‰n j‰rjestyksess‰ ja ne voivat menn‰ ristiin ja p‰‰lekk‰in.
+Kysymyksi√§, joihin vastaamalla pelimoottorin, toimintojen tekemisen ja v√§lineiden k√§ytt√§misen design etenee:
 
--kannattaa(ko?) olla erikseen kansio "objects"
--objects-kansion alla kannattaa olla oma kansionsa erilaisille objektityypeille:
-* weapon
-* furniture
-* building
-* machine
-* animal
-* human
+- Mit√§ kaikkia toimintoja pelaajan halutaan voivan k√§ytt√§√§ yleisesti ja v√§lineiden kanssa?
+--> Halutaanko antaa pelaajalle mahdollisuus esimerkiksi sy√∂d√§ ja juoda ruokaa ja juomaa?
+--> Tapahtuuko arkip√§iv√§isten asioiden hoitaminen pelaajan hahmolta automaattisesti?
+--> Onko t√§m√§ t√§ysin pelikohtaista, eli tarvitseeko t√§h√§n ottaa kantaa ollenkaan moottorin osalta?
+--> Eli: Pit√§isik√∂ moottorin vain tukea mielivaltaisia toimintoja ja mielivaltaisia toiminnan kohteita, jotka pelin tekij√§ itse jollakin tapaa m√§√§rittelee (esimerkiksi totuustaulukolla)?
+--> Ilmeinen vastaus viimeiseen kysymyseen on: kyll√§. Moottorin ei pit√§isi ottaa mill√§√§n tapaa kantaa siihen, voiko tai pit√§√§k√∂ pelaajahahmon sy√∂d√§ tai nukkua tai mit√§√§n muutakaan. Moottori mahdollistaa verbin ja v√§lineen subjektille.
 
--eri objektityyppien alla kannattaa (ehk‰) olla omat kansionsa/tiedostonsa erilaisille ilemtymille kyseisest‰ tyypist‰:
-* weapon
-** axe
-* furniture
-** table
-* building
-** cottage
-* machine
-** saw
-* animal
-** fox
-* human
-** worker
+Moottorin rakenteesta ja puhutusta kielest√§:
+Asiat ja esineet, joiden kanssa pelaaja ja AI voivat vuorovaikuttaa, ovat v√§lineit√§ (toiminnan kohteita tai toimintaan k√§ytett√§vi√§ asioita).
+Toiminnot, joita pelaaja ja AI tekev√§t ovat verbej√§.
+Pelaaja tai AI on subjekti.
 
--koodin puolesta luodaan oma luokka "objects", jolle tietyt toiminnot ovat mahdollisia,
-	ja jonka kaikki objektit periv‰t:
--- objekteja (k‰yt‰nnˆss‰ kaikkia fyysisi‰ asioita) voi haistaa/maistaa/katsoa/kuunnella/koskea
+Toimintamalli, kun subjekti haluaa "toteuttaa verbin" v√§lineelle/-ll√§:
+Vastataan kysymykseen "Voiko t√§lle/-ll√§ v√§lineelle/-ll√§ toteuttaa t√§m√§n verbin?" (esimerkiksi "Voiko miekalla ly√∂d√§?", "Voiko p√∂yd√§lle kiivet√§?").
+Mik√§li edelliseen kysymykseen vastattiin my√∂nt√§v√§sti, vastataan seuraavaksi kysymykseen "Voiko t√§m√§ subjekti toteuttaa t√§m√§n verbin t√§lle/-ll√§ v√§lineelle/-ll√§?"
+Mik√§li molempiin edellisiin kysymyksiin vastattiin my√∂nt√§v√§sti, subjekti voi toteuttaa verbin v√§lineelle/-ll√§, ja siit√§ kerrotaan pelaajalle.
 
-- kaikki alityypit periv‰t objektin ominaisuudet, mutta niilla on myˆs omia uniikkeja ominaisuuksiaan jotka t‰ydent‰v‰t ja korvaavat perittyj‰ ominaisuuksia:
--- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
---- aseita voi heitt‰‰, nostaa, niill‰ voi lyˆd‰/ampua, niit‰ voi myyd‰/rakentaa/purkaa
--- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
---- rakennuksien sis‰‰n/ulos voi menn‰, niit‰ voi rakentaa/purkaa/myyd‰
--- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
---- el‰imi‰ voi myyd‰/tappaa/k‰ske‰
-
--kaikista alityypeist‰ luodaan omia ilmentymi‰‰n, joilla on omia uniikkeja ominaisuuksiaan jotka t‰ydent‰v‰t ja korvaavat perittyj‰ ominaisuuksia:
--- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
---- aseita voi heitt‰‰, nostaa, niill‰ voi lyˆd‰/ampua, niit‰ voi myyd‰/rakentaa/purkaa
----- kirvest‰ voi teroittaa, sen voi heitt‰‰
----- miekkaa voi teroittaa, sill‰ voi pist‰‰/viilt‰‰/torjua
--- objekteja voi haistaa/maistaa/katsoa/kuunnella/koskea
---- rakennuksien sis‰‰n/ulos voi menn‰, niit‰ voi rakentaa/purkaa/myyd‰
----- vajan voi r‰j‰ytt‰‰
----- linnan voi piiritt‰‰
-
-- ilmentymill‰ voi olla erilaisia ali-ilmentymi‰, joilla voi olla esimerkiksi erilaisia materiaaleja:
--- kirves
---- kirves, puuvartinen
---- kirves, metallivartinen
--- miekka
---- rapier
---- kahden k‰den lyˆm‰miekka
---- ‰p‰r‰miekka
---- puinen lelumiekka
-
-
-
-
-
-
-- mik‰ on j‰rkevin tapa luoda (pelin tekijˆiden toimesta, ei koodin puolesta) objekteja peliin?
--- jokaisella objektilla olisi hyv‰ olla oma tiedostonsa, jossa sill‰/-lle teht‰v‰t asiat on
-	kirjattuna, esimerkkin‰ seuraava:
-
-	----------------------------------------------------
-	sword.txt
-	ACTION take	hit	touch	throw	discard	eat	drink
-			1	1	1		1		1		0	0
-	----------------------------------------------------
-
---- hyv‰ puoli t‰ss‰ on se, ett‰ kun objekteja alkaa olla satoja tai tuhansia,
-	niin ei tarvitse selata yht‰ tiedostoa, jossa on tuhansia eri objekteja ja paljon dataa,
-	vaan jokainen tiedosto on oma selke‰ kokonaisuutensa, esimerkiksi "axe_wooden.xml/.csv/.txt",
-	"door_metal.xml/.csv/.txt", "whiskey_bottle.xml/.csv/.txt"
---- huono puoli on interkatioiden yll‰pidett‰vyys, p‰ivitt‰mien ja lis‰‰minen:
----- aina kun keksit‰‰n uusi asia tai verbi, jonka peliss‰ voi tehd‰, t‰ytyy kaikki
-	tiedostot p‰ivitt‰‰ erikseen
 
