@@ -1,4 +1,4 @@
-Kysymyksiä, joihin vastaamalla pelimoottorin, toimintojen tekemisen ja välineiden käyttämisen design etenee:
+Yleisiä kysymyksiä, joihin vastaamalla pelimoottorin, toimintojen tekemisen ja välineiden käyttämisen design etenee:
 
 - Mitä kaikkia toimintoja pelaajan halutaan voivan käyttää yleisesti ja välineiden kanssa?
 --> Halutaanko antaa pelaajalle mahdollisuus esimerkiksi syödä ja juoda ruokaa ja juomaa?
@@ -7,14 +7,38 @@ Kysymyksiä, joihin vastaamalla pelimoottorin, toimintojen tekemisen ja välinei
 --> Eli: Pitäisikö moottorin vain tukea mielivaltaisia toimintoja ja mielivaltaisia toiminnan kohteita, jotka pelin tekijä itse jollakin tapaa määrittelee (esimerkiksi totuustaulukolla)?
 --> Ilmeinen vastaus viimeiseen kysymyseen on: kyllä. Moottorin ei pitäisi ottaa millään tapaa kantaa siihen, voiko tai pitääkö pelaajahahmon syödä tai nukkua tai mitään muutakaan. Moottori mahdollistaa verbin ja välineen subjektille.
 
-Moottorin rakenteesta ja puhutusta kielestä:
-Asiat ja esineet, joiden kanssa pelaaja ja AI voivat vuorovaikuttaa, ovat välineitä (toiminnan kohteita tai toimintaan käytettäviä asioita).
-Toiminnot, joita pelaaja ja AI tekevät ovat verbejä.
-Pelaaja tai AI on subjekti.
+-------------------------------------------
+Käytetystä kielestä:
+--------------------------------------------
 
+Asiat ja esineet, joiden kanssa pelaaja ja AI voivat vuorovaikuttaa, ovat välineitä (toiminnan kohteita tai toimintaan käytettäviä asioita). Esimerkiksi miekka, pöytä, pullo, patsas, tynnyri, lintu, kissa, auto, halko
+Toiminnot, joita pelaaja ja AI tekevät ovat verbejä. Esimerkiksi lyö, osta, syö, hyppää, kiipeä, ammu, potkaise
+Pelaaja tai AI on subjekti. Esimerkiksi pelaaja tai AI (*ba dum tsih*).
+
+---------------------------------------------------------------------
 Toimintamalli, kun subjekti haluaa "toteuttaa verbin" välineelle/-llä:
+----------------------------------------------------------------------
+
 Vastataan kysymykseen "Voiko tälle/-llä välineelle/-llä toteuttaa tämän verbin?" (esimerkiksi "Voiko miekalla lyödä?", "Voiko pöydälle kiivetä?").
 Mikäli edelliseen kysymykseen vastattiin myöntävästi, vastataan seuraavaksi kysymykseen "Voiko tämä subjekti toteuttaa tämän verbin tälle/-llä välineelle/-llä?"
-Mikäli molempiin edellisiin kysymyksiin vastattiin myöntävästi, subjekti voi toteuttaa verbin välineelle/-llä, ja siitä kerrotaan pelaajalle.
+Mikäli molempiin edellisiin kysymyksiin vastattiin myöntävästi, subjekti voi toteuttaa verbin välineelle/-llä, ja siitä kerrotaan pelaaja-subjektille.
 
+--------------------------------------------------------------------------------------------------------------------
+Ajatuksia kooditoteutuksesta liittyen välineisiin ja ympäristöihin, joissa ne sijaitsevat, sekä pelaajan tavaralistaan:
+---------------------------------------------------------------------------------------------------------------------
 
+Jokaisella ympäristöllä, alueella, paikalla, moduulilla tms. (majatalo, luola, kirkko, hautausmaa, avaruusalus, omenatarha) on itsellään lista kaikista välineistä, joita alue pitää sisällään. Mikäli alue koostuu useammista pienistä alueista (hautausmaan tapauksessa avoin hauta 1, avoin hauta 2, mausoleumi, vaja, kellari yms. tms.), voi jokaisella näillä ali-alueilla olla oma listansa, ja pääalue viittaa näihin listoihin, sekä pitää oman listansa, jossa on välineet, jotka eivät ole missään näistä ali-alueiden listoista.
+Mikäli väline on uniikki, poistetaan kyseinen väline alueen listasta kun/jos pelaaja ottaa kyseisen välineen mukaansa, ja lisätään se pelaajan listaan. Mikäli pelaaja ottaa mukaansa välineen, jota alueella luulisi olevan ns. "rajattomasti" (esim. omenoita omenatarhassa), kyseistä välinettä ei poisteta alueen listasta, mutta se lisätään pelaajan listaan.
+
+Pelaajalla on siis lista välineistä, joita hän kantaa mukanaan. Moottori ei rajoita listan kokoa, eli moottorin puolesta pelaaja voi kantaa puolet universumista mukanaa, jos niin haluaa. Kun pelaaja heittää välineen pois, poistetaan väline pelaajan listasta.
+
+Tähän liittyviä funktioita:
+addItemToInventory(Item item)
+removeItemFromInventory(Item item)
+
+Selvästi tarvitaan myös luokat:
+Character
+Item
+Area
+
+Character luokan kuuluu selvästi implementoida välineiden hallinta. Tätä hallintaa tarvitaan myös alueiden tapauksessa, joten ovatko myös alueet instansseja Character-luokasta? Todella typerää jos ovat, eli sama toiminnallisuus tarvitaan kahdelle eri luokalle. Pitäsikö siis välineiden hallinta toteuttaa Item-luokan toimesta, jolle annetaan entiteetti, jonka välineitä hallitaan (Character/Area)? Tämä pakottaa sinänsä vain Characterille kuuluvan tiedon (private: int items[]) jakamisen täysin erilliselle luokalle, mikä sama pätee myös alueen tapauksessa.
