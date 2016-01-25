@@ -1,4 +1,4 @@
-Yleisiä kysymyksiä, joihin vastaamalla pelimoottorin, toimintojen tekemisen ja välineiden käyttämisen design etenee:
+﻿Yleisiä kysymyksiä, joihin vastaamalla pelimoottorin, toimintojen tekemisen ja välineiden käyttämisen design etenee:
 
 - Mitä kaikkia toimintoja pelaajan halutaan voivan käyttää yleisesti ja välineiden kanssa?
 --> Halutaanko antaa pelaajalle mahdollisuus esimerkiksi syödä ja juoda ruokaa ja juomaa?
@@ -42,3 +42,5 @@ Item
 Area
 
 Character luokan kuuluu selvästi implementoida välineiden hallinta. Tätä hallintaa tarvitaan myös alueiden tapauksessa, joten ovatko myös alueet instansseja Character-luokasta? Todella typerää jos ovat, eli sama toiminnallisuus tarvitaan kahdelle eri luokalle. Pitäsikö siis välineiden hallinta toteuttaa Item-luokan toimesta, jolle annetaan entiteetti, jonka välineitä hallitaan (Character/Area)? Tämä pakottaa sinänsä vain Characterille kuuluvan tiedon (private: int items[]) jakamisen täysin erilliselle luokalle, mikä sama pätee myös alueen tapauksessa.
+
+Blaa blaa
