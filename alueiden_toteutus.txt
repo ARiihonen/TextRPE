@@ -1,0 +1,83 @@
+Pohdiskelua ja yritys hahmotella yksittäisten pelialueiden toteutusta
+
+========================
+Alueen rajaaminen
+========================
+
+Vaihtoehto 1: Jokainen distinktiivinen alue, joilta näkyvyys toisille vain selkeällä siirtymällä esim. 
+oven tai muun aukon kautta, on oma alueensa. Tällöin siis majatalon jokainen huone olisi oma alueensa. 
+Mahdollisesti liian rajaava?
+
+Vaihtoehto 2: Rajoitetaan alue vapaammin ja mahdollistetaan osa-alueiden paljastaminen tietyn tapahtuman 
+(kun ovi aukeaa huoneeseen tai valot menevät pimeässä hallissa päälle) yhteydessä.
+
+Mutuilulla vaihtoehto 2 parempi.
+
+========================
+Rakenne-ehdotus
+========================
+
+3D-koordinaatisto, jolle määritelty horisontaaliset "lattia"-tasot, joilla mahdollista oleskella sekä niiden
+rajat (seinä, kaide).
+
+Esim. kirkko:
+
+1. krs:
+
+lattian korkeus 0, jokainen raja kiviseinä.
+ _________________________________________
+|                                         |
+|                                         |
+|                                         |
+|                                         |
+|                                         |
+|                                         |
+|                                         |
+|_________________________________________|
+
+2. krs:
+
+lattian korkeus 3, pisteillä merkitty raja kaide.
+Kahden määritellyn lattiatason välillä tyhjyyttä.
+
+ _________________________________________
+|                                         |
+|.........................................|
+                                           
+                                           
+                                           
+ .........................................                                          
+|                                         |
+|_________________________________________|
+
+
+Pinnoilta tulee voida määritellä osa-alueita, joilla on sisältö (objekteja, henkilöitä) ja yksinkertainen
+kuvaus. Esim: 1. kerroksessa keskellä käytävä kirkon päästä päähän, jolla ylellinen punainen matto. Sen 
+päässä korotettu alttari, jolla iso patsas. Käytävän molemmilla puolilla rivi pylväitä kattoon asti. Pitkien
+seinien vieressä molemmilla puolilla kaksi jonoa penkkejä.
+
+Koko aluetta kuvaillessa käytetään näitä lyhyempiä selityksiä. Jos tiettyä osa-aluetta tarkastelee tarkemmin,
+tästä alueesta voi saada tarkempaa tietoa. (penkkien tai niillä istuvien ihmisten tarkka lukumäärä, patsaan
+yksityiskohdat). Mahdollistetaan myös yksityiskohtaisempi objektien asetteleminen tilaan, jos se on tarpeellista,
+mutta sisällytetään tämä tarkempaan informaatioon, mahdollisella lisäyksellä lyhyeen kuvaukseen.
+
+Lattiatasojen korkeuksia ei liene tarpeellista rajata kokonaislukuihin, vaan voi olla hyödyllistä mahdollistaa
+liukulukujen käyttö ja tiettyjen osa-alueiden pintojen erotteleminen kymmenillä senteillä tjsp, silti mahdollistaen
+vapaan liikkumisen näiden välillä (ehkä joku raja siihen, kuinka korkean askeleen voi ottaa? entäs sivuttain tai kulmassa
+loikkaaminen?).
+
+Kiintopisteet, mukaanlukien sisäänkäynnit? Liike alueelta toiselle ja mahdolliset perässä tulevat tyypit?
+
+
+========================
+Toiminnallisuus
+========================
+
+Järjestelmän tulee kyetä ilmoittamaan kahden pisteen välillä olevat alueet sekä niiden väliltä löytyvät objektit, henkilöt
+ja muut asiat.
+
+Tietyt alueet tulee pystyä piilottamaan kunnes pelaaja esim. tulee tarpeeksi lähelle tai avaa oven.
+
+Useammalla saman tyylisellä kohdalla tulee olla joku distinktiivinen piirre, jolla nämä erotetaan toisistaan sanallisessa
+kuvailussa ('the benches _on the other side_'). Samoin eri osa-alueiden tulee tunnistaa onko niistä puhuttu jo (vrt. 
+_a_ row of benches / _the_ row of benches).
