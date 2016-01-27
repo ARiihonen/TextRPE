@@ -1,0 +1,35 @@
+http://gdcvault.com/play/1021774/Adventures-in-Text-Innovating-in
+
+Mieleenjääneitä pointteja puheesta:
+
+    pelaajalle esitettävä teksti pienissä osissa
+        helpompaa lukea (ja pelaaja ylipäänsä viitsii lukea tekstin kokonaan)
+        mikäli teksti kuvailee tilannetta, johon/jossa pelaaja voi vaikuttaa, yksi pieni valinta lyhyen kuvauksen jälkeen toistettuna monta kertaa peräkkäin antaa pelaajalle aina vahvemman kokemuksen, kuin yksi suuri kuvaus, jonka jälkeen yksi Suuri Päätös
+    yleisesti ottaen aina paljon pieniä päätöksiä. Pienet päätökset muodostavat jatkumon ja kokemuksien ketjun, jotka määrittävät pelaajaa ja pelaajan hahmoa henkilönä. Päätöksiä tyyliin: Pöydän ympärillä on neljä tuolia, joista kahdella istuu kaksi ystävääsi. Kumman viereen istuudut vai jäätkö seisomaan pöydän päähän? tai "Rakennuksen etuovi ei vaikuttaisi olevan lukossa, mutta uskot pystyväsi kiipeämään roskiksen päältä myös ikkunasta sisään. Kattoikkunasta voisit toisaalta nähdä koko rakennuksen sisäosan ja tikkaat näyttävät tukevilta. Minkä reitin valitset?"
+    _Aina_ kolme vaihtoehtoista valintaa. Aina pitää välttää binäärivalintoja, kun vain mahdollista.
+    Tarinan haarautuminen täytyy todistaa pelaajalle HETI, eikä luottamusta saa pettää.
+        Pelaaja täytyy saada uskomaan, ettei hän kulje vain hetkeksi haarautuvaa polkua, joka myöhemmin yhdistyy "päälinjaan".
+        Kun pelaaja on saatu uskomaan tähän omasta tahdostaan, on täysin laillista ja pelkästään järkevää yhdistää haarautuvia linjoja, pelaaja kuitenkin luottaa ja uskoo siihen.
+        Aika ajoin on hyvä osoittaa pelaajalle tarinan haarautuminen. Erinomainen tapa tähän olisi kartta, jossa näkyy esim.:
+            Missä paikoissa pelaaja on käynyt, ja mitä pelaaja on siellä tehnyt
+            Missä paikoissa pelaaja ei ole vielä käynyt, mitä hän tietää paikoista
+            Mihin paikkoihin pelaaja ei enää pääse, koska hän on tehnyt jotain tai jättänyt tekemättä jotain
+            Mitkä paikat ovat auenneet, koska pelaaja on tehnyt jotain tai jättänyt tekemättä jotain
+        Pelaajan valinta on MITEN asia tapahtuu, pelin valinta on MITÄ tapahtuu. Tarinaa viedään eteenpäin joka tapauksessa, mutta pelaaja valitsee miltä hänen tarinansa maistuu tai näyttää.
+    AI:n (tai seuralaisen/kumppanin/ryhmäläisen) suhtautuminen pelaajaan (suora ripoff 80 daysista):
+        vektori, jossa kaksi komponenttia: tension up ja tension down
+        Tension up kasvaa, kun pelaaja tekee jotain, mikä kasvattaa pelaajan hahmon ja seuralaisen välistä jännitettä
+        Tension down kasvaa, kun pelaaja tekee jotain, mikä vähentää pelaajan hahmon ja seuralaisen välistä jännitettä
+        Näiden avulla voidaan laskea suhtautuminen: mikäli N% kaikista päätöksistä on johtanut tension upin kasvamiseen, suhtautuminen on jännittynyttä tms.
+        Seuralaisen suhtautuminen on myös konsistenttia ja järkevää: kun pelaajan hahmo on kokenut seuralaisen kanssa vain vähän asioita, yksikin teko voi olla merkittävä mielipiteen kannalta. Kun seuralainen on ollut pelaajan mukana kauan ja kokenut paljon, yhdellä teolla ei ole juurikaan merkitystä seuralaisen mielipiteeseen pelaajan hahmosta. Tätä voisi myös painottaa esimerkiksi niin, että tuoreemmat tapahtumat antavat enemmän painoarvoa, jolloin vuosia sitten tehty paska asia ei peitä alleen eilen tehtyä hyvää asiaa.
+        Tällaisia "tension increases", "tension decreases" tilanteita ei pitäisi ilmoittaa pelaajalle (pelaajalla ei ole moraalimittaria, joka sanoo, että "10 hyvää actionia,  niin olette taas hyvää pataa") eikä niitä kuulu laittaa jokaiseen tilanteeseen, jonka pelaaja kokee seuralaisen kanssa. Kuten tehtiin 80 daysissa (pelin tekijän näkökulmasta): "Kun tekstin luettua tuntuu siltä, että tämä oli merkittävä kohta ja päätöksen lopputulemalla on väliä seuralaiselle, asetetaan päätös aiheuttamaan tension uppia tai tension downia".
+
+
+Mitä tämä tarkoittaa moottorin kannalta:
+
+    Jos halutaan kartta (olis ihan vitun kewl, koska kartat on helvetin siistejä, auttavat tarinankerrontaa ja niissä on pajon luonnetta ja informaatiota), tarvitaan UI (koko UI:n pohtiminen on muutenkin kokonaan oma projektinsa)
+    Tekstin esittäminen pienissä osissa. Mikä on järkevä formaatti tai tapa? Tällä on tekemistä myös UI:n kanssa
+    Seuralais AI:n toteuttamiseen liittyvät asiat:
+        Täytyy pitää kirjaa seuralaisen suhtautumisesta pelaajan tekemisiin.
+        Tiettyjen tilanteiden ja tapahtumien täytyy vaikuttaa seuralaisen mielipiteeseeen.
+        Tällaisia tilanteita täytyy voida lisätä ja poistaa tarinaan/-sta täysin vapaasti kirjoittamisen jälkeen. Moottorin täytyy siis tukea täysin tarinan kirjoittamisesta irrallisena toimintona mahdollisuuden lisätä juttuja tilanteisiin.
